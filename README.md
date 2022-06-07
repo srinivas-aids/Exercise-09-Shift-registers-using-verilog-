@@ -45,35 +45,105 @@ A Parallel in Parallel out (PIPO) shift register is used as a temporary storage 
 
 
 
-### PROGRAM 
+### PROGRAM
+~~~
 /*
 Program for  Implementation-of Shift-registers-using-verilog-
-Developed by: 
-RegisterNumber:  
+Developed by: u.srinivas
+RegisterNumber:  212221230108
+
+module sipo(c,si,po);
+input c,si;
+output [7:0] po;
+reg [7:0] temp;
+
+always @ (posedge c)
+begin
+temp = {temp[6:0],si};
+end
+assign po = temp;
+endmodule 
+
 */
+~~~
+
+
+
+### RTL LOGIC  REGISTERS 
+
+![Screenshot 2022-06-07 144909](https://user-images.githubusercontent.com/93427183/172344769-168a3081-e4e9-45f7-99b5-af5645fe9250.jpg)
 
 
 
 
 
 
-### RTL LOGIC  REGISTERS   
 
 
 
 
+![172343477-d655b5aa-1425-4a76-bca7-0de2ab5bc82f](https://user-images.githubusercontent.com/93427183/172345216-551371d6-b3d8-4713-a2fb-fad83d00c4c9.jpeg)
+
+### PROGRAM 
+~~~
+/*
+Program for  Implementation-of Shift-registers-using-verilog-
+Developed by: u.srinivas
+RegisterNumber:  212221230108
+
+module piro(c,pi,so,load);
+input [3:0] pi;
+input load,c;
+output reg so;
+reg [3:0] temp;
+always @ (posedge c)
+begin 
+if(load)
+temp <= pi;
+else
+begin
+so<=temp[3];
+temp <={temp[2:0],1'b0};
+end
+end
+endmodule
+
+*/
+~~~
+### RTL LOGIC  REGISTERS 
 
 
+![2](https://user-images.githubusercontent.com/93427183/172346400-a21d9beb-2d96-4784-a369-72dab09f88d8.png)
 
 
 
 ### TIMING DIGRAMS FOR SHIFT REGISTERS
+![3](https://user-images.githubusercontent.com/93427183/172346436-bb834710-7031-4743-9270-ee3072b3d2cd.jpeg)
+
+### PROGRAM 
+~~~
+Program for  Implementation-of Shift-registers-using-verilog-
+Developed by: u.srinivas
+RegisterNumber:  212221230108
+
+module sipo(pi,po,clk);
+input clk;
+input [3:0] pi;
+output reg [3:0] po;
+always @ (posedge clk)
+begin 
+po=pi;
+end
+endmodule 
+~~~
+### RTL LOGIC  REGISTERS 
+
+![4](https://user-images.githubusercontent.com/93427183/172346658-cc3dbf3c-d2af-44b3-b420-d0745aeaa958.png)
+
+### TIMING DIGRAMS FOR SHIFT REGISTERS
+
+![5](https://user-images.githubusercontent.com/93427183/172346693-95f7fb15-b670-469e-beff-fa0f920bce02.jpeg)
 
 
-
-
-
-
-
-
-### RESULTS 
+### RESULTS :
+THUS THE PROGRAM TO IMPLEMENT SHIFT REGISTERS IS DONE SUCCESSFUL.
